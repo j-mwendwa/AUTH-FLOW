@@ -1,8 +1,9 @@
 package com.example.kotlinauthflow.data.services
 
 import com.example.kotlinauthflow.domain.AuthService
+import jakarta.inject.Inject
 
-class EmailAuthService : AuthService {
+class EmailAuthService @Inject constructor() : AuthService {
 
     override suspend fun login(email: String, password: String): Boolean{
         return email == "william.paterson@my-own-personal-domain.com" && password == "password"

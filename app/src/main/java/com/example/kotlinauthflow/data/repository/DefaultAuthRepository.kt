@@ -3,8 +3,9 @@ package com.example.kotlinauthflow.data.repository
 import com.example.kotlinauthflow.domain.AuthRepository
 import com.example.kotlinauthflow.domain.AuthResult
 import com.example.kotlinauthflow.domain.AuthService
+import jakarta.inject.Inject
 
-class DefaultAuthRepository (private val service: AuthService): AuthRepository {
+class DefaultAuthRepository @Inject constructor(private val service: AuthService): AuthRepository {
 
     override suspend fun loginWithEmail(email: String, password: String): AuthResult {
         return if (service.login(email, password)) AuthResult.Success

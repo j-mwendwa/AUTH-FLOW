@@ -5,11 +5,14 @@ import androidx.lifecycle.viewModelScope
 import com.example.kotlinauthflow.data.repository.DefaultAuthRepository
 import com.example.kotlinauthflow.domain.AuthRepository
 import com.example.kotlinauthflow.domain.AuthResult
+import dagger.hilt.android.lifecycle.HiltViewModel
+import jakarta.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class AuthViewModel (private val repo: AuthRepository) : ViewModel(){
+@HiltViewModel
+class AuthViewModel @Inject constructor(private val repo: AuthRepository) : ViewModel(){
     private val _authState = MutableStateFlow<AuthResult>(AuthResult.Idle)
     val authState = _authState.asStateFlow()
 
