@@ -1,20 +1,10 @@
 package com.example.kotlinauthflow.domain
 
-/*Implementation for our interface our interface will be emmail,
-phone and google login*/
+/*Simple Auth-Services will be email and login for know,they will inherit from the AuthResult*/
 
 interface AuthService{
-    //Email Login
-
-    suspend fun login  (email:String,password:String):Boolean
-
-    //Phone Login
-    suspend fun login (phone:String):Boolean
-
-    //Google Login
-    suspend fun login():Boolean
-
-    fun logout()
+    suspend fun login(email: String, password: String): AuthResult
+    suspend fun register(email: String, password: String): AuthResult
 
 }
 //Overloading -> Multiple functions with same name but different parameters

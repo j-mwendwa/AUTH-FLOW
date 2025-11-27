@@ -7,23 +7,16 @@ import jakarta.inject.Inject
 
 class DefaultAuthRepository @Inject constructor(private val service: AuthService): AuthRepository {
 
-    override suspend fun loginWithEmail(email: String, password: String): AuthResult {
-        return if (service.login(email, password)) AuthResult.Success
-        else AuthResult.Error("Something went wrong")
-    }
+    override suspend fun login(email: String, password: String) =
+        service.login(email, password)
 
-    override suspend fun loginWithPhone(phone: String): AuthResult {
-        return if (service.login(phone)) AuthResult.Success
-        else AuthResult.Error("Something went wrong")
+    // override suspend fun loginWithPhone(phone: String) =
 
-    }
 
-    override suspend fun loginWithGoogle(): AuthResult {
-        return if (service.login()) AuthResult.Success
-        else AuthResult.Error("Google login failed")
-    }
+    override suspend fun register(email: String, password: String) =
+        service.register(email, password)
 
-    override fun logout() {
-        service.logout()
-    }
+    //override fun logout() {
+    // service.logout()
+    //}
 }

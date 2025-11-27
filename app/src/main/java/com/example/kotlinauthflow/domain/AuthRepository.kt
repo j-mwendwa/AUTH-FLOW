@@ -1,8 +1,11 @@
 package com.example.kotlinauthflow.domain
 
 interface AuthRepository{
-    suspend fun loginWithEmail(email: String, password: String): AuthResult
-    suspend fun loginWithPhone(phone: String): AuthResult
-    suspend fun loginWithGoogle(): AuthResult
-    fun logout()
-}
+    suspend fun login(email: String, password: String): AuthResult
+
+    //suspend fun loginWithPhone(phone: String)
+    suspend fun register(email: String, password: String): AuthResult
+    //fun logout()
+}//()
+ //   fun logout()
+//}

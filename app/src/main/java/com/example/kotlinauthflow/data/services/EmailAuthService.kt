@@ -1,23 +1,29 @@
 package com.example.kotlinauthflow.data.services
 
+import com.example.kotlinauthflow.domain.AuthResult
 import com.example.kotlinauthflow.domain.AuthService
+import com.google.firebase.auth.FirebaseAuth
 import jakarta.inject.Inject
+import kotlinx.coroutines.tasks.await
 
-class EmailAuthService @Inject constructor() : AuthService {
+class EmailAuthService @Inject constructor(private val firebaseAuth: FirebaseAuth) : AuthService {
 
-    override suspend fun login(email: String, password: String): Boolean{
-        return email == "william.paterson@my-own-personal-domain.com" && password == "password"
+    override suspend fun login(email: String, password: String): AuthResult {
+       return try {
+            firebaseAuth.signInWithEmailAndPassword(email, password).await()
+           AuthResult.Success
+        } catch (e: Exception) {
+           AuthResult.Error(e.message ?: "Something went wrong")
+           }
+        }
+        override suspend fun register(email: String, password: String): AuthResult {
+            return try {
+                firebaseAuth.createUserWithEmailAndPassword(email, password).await()
+                AuthResult.Success
+            } catch (e: Exception) {
+                AuthResult.Error(e.message ?: "Something went wrong")
+            }
+        }
+
     }
 
-    override suspend fun login(phone: String): Boolean {
-        return false
-    }
-    override suspend fun login (): Boolean {
-        return false
-    }
-
-    override fun logout() {
-        println("Logging out")
-    }
-
-}

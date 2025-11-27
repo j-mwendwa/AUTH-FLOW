@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "909445584003",
+    "project_id": "fullauthentification-6a97d",
+    "storage_bucket": "fullauthentification-6a97d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:909445584003:android:48ca0e654ef07b8abbb7b6",
+        "android_client_info": {
+          "package_name": "com.example.kotlinauthflow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "909445584003-0up0kg1cn483hn50jd6kqf2anlbl33qn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCI-sSFNwXNOJD8pYXou0TcTFFyWSD7GCI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "909445584003-0up0kg1cn483hn50jd6kqf2anlbl33qn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:909445584003:android:233b57afcaa2085fbbb7b6",
+        "android_client_info": {
+          "package_name": "coml.example.authprojects"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "909445584003-0up0kg1cn483hn50jd6kqf2anlbl33qn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCI-sSFNwXNOJD8pYXou0TcTFFyWSD7GCI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "909445584003-0up0kg1cn483hn50jd6kqf2anlbl33qn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
