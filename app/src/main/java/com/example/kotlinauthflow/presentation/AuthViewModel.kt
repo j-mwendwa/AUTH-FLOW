@@ -4,13 +4,20 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.kotlinauthflow.data.repository.DefaultAuthRepository
 import com.example.kotlinauthflow.domain.AuthRepository
-import com.example.kotlinauthflow.domain.AuthResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
+
+
+sealed class AuthResult{
+    object Idle:AuthResult()
+    object Success:AuthResult()
+    data class Error(val message:String):AuthResult()
+    object Loading:AuthResult()
+}
 @HiltViewModel
 class AuthViewModel @Inject constructor(private val repo: AuthRepository) : ViewModel() {
     private val _authState =
@@ -23,19 +30,23 @@ class AuthViewModel @Inject constructor(private val repo: AuthRepository) : View
         _authState.value = AuthResult.Loading
         viewModelScope.launch {
             val result = repo.login(email, password)
-            _authState.value = result
+            _authState.value = if (result.isSuccess) AuthResult.Success else AuthResult.Error(
+                result.exceptionOrNull()?.message ?: "Error Encountered"
+            )
         }
+
 
         fun register(email: String, password: String) {
             _authState.value = AuthResult.Loading
             viewModelScope.launch {
 
                 val result = repo.register(email, password)
-                _authState.value = result
+                _authState.value = if (result.isSuccess) AuthResult.Success else AuthResult.Error(
+                    result.exceptionOrNull()?.message ?: "Error Encountered"
+                )
+            }
             }
 
         }
 
     }
-
-}

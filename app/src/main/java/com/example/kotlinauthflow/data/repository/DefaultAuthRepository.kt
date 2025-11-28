@@ -1,7 +1,6 @@
 package com.example.kotlinauthflow.data.repository
 
 import com.example.kotlinauthflow.domain.AuthRepository
-import com.example.kotlinauthflow.domain.AuthResult
 import com.example.kotlinauthflow.domain.AuthService
 import jakarta.inject.Inject
 

@@ -3,8 +3,8 @@ package com.example.kotlinauthflow.domain
 /*Simple Auth-Services will be email and login for know,they will inherit from the AuthResult*/
 
 interface AuthService{
-    suspend fun login(email: String, password: String): AuthResult
-    suspend fun register(email: String, password: String): AuthResult
+    suspend fun login(email: String, password: String): Result<Unit>
+    suspend fun register(email: String, password: String): Result<Unit>
 
 }
 //Overloading -> Multiple functions with same name but different parameters
