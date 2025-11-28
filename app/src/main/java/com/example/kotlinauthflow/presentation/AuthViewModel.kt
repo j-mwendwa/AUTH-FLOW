@@ -35,6 +35,29 @@ class AuthViewModel @Inject constructor(private val repo: AuthRepository) : View
             )
         }
 
+        fun GoogleLogin(idToken: String) {
+            _authState.value = AuthResult.Loading
+            viewModelScope.launch {
+                val result = repo.googleLogin(idToken)
+                _authState.value = if (result.isSuccess) AuthResult.Success else AuthResult.Error(
+
+                    result.exceptionOrNull()?.message ?: "Google Login Failed"
+                )
+            }
+
+        }
+        fun FacebookLogin(accessToken: String) {
+            _authState.value = AuthResult.Loading
+            viewModelScope.launch {
+                val result = repo.facebookLogin(accessToken)
+                _authState.value = if (result.isSuccess) AuthResult.Success else AuthResult.Error(
+
+                    result.exceptionOrNull()?.message ?: "Facebook Login Failed"
+                )
+
+            }
+        }
+
 
         fun register(email: String, password: String) {
             _authState.value = AuthResult.Loading
